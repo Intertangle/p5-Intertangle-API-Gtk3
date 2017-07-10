@@ -1,5 +1,5 @@
-use Renard::Curie::Setup;
-package Renard::Curie::Helper;
+use Renard::Incunabula::Common::Setup;
+package Renard::Incunabula::Frontend::Gtk3::Helper;
 
 # ABSTRACT: Collection of helper utilities for Gtk3 and Glib
 
@@ -8,7 +8,7 @@ package Renard::Curie::Helper;
 
 =cut
 
-use Renard::Curie::Types qw(Str);
+use Renard::Incunabula::Common::Types qw(Str);
 use Class::Method::Modifiers;
 use Gtk3 -init;
 use Function::Parameters;
@@ -205,7 +205,7 @@ For example, if we are trying to call the callback function
 C<Target::Package::on_event_cb> and C<$target> is a blessed reference of type
 C<Target::Package>, then by using
 
-  Renard::Curie::Helper->callback( $target, on_event_cb => @rest_of_args );
+  Renard::Incunabula::Frontend::Gtk3::Helper->callback( $target, on_event_cb => @rest_of_args );
 
 effectively calls
 

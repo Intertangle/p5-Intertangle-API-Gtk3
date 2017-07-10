@@ -1,10 +1,10 @@
-use Renard::Curie::Setup;
-package Renard::Curie::Component::Role::FromBuilder;
+use Renard::Incunabula::Common::Setup;
+package Renard::Incunabula::Frontend::Gtk3::Component::Role::FromBuilder;
 # ABSTRACT: Role that loads a Glade UI file into a Gtk3::Builder
 
 use Moo::Role;
-use Renard::Curie::Helper;
-use Renard::Curie::Types qw(InstanceOf);
+use Renard::Incunabula::Frontend::Gtk3::Helper;
+use Renard::Incunabula::Common::Types qw(InstanceOf);
 
 =attr ui_file
 
@@ -42,7 +42,7 @@ before BUILD => method(@) {
 
 This role is used to load a Glade file into the C<builder> attribute.
 
-This role can be combined with L<Renard::Curie::Component::Role::UIFileFromPackageName>
+This role can be combined with L<Renard::Incunabula::Frontend::Gtk3::Component::Role::UIFileFromPackageName>
 so that the contents of the C<ui_file> attribute are automatically populated
 based on the package that the role is being included in.
 

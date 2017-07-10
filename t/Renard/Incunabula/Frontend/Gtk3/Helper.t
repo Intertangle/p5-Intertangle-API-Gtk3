@@ -4,10 +4,10 @@ use Test::Most tests => 2;
 
 use lib 't/lib';
 use CurieTestHelper;
-use Renard::Curie::Setup;
+use Renard::Incunabula::Common::Setup;
 
 # need to import later --- after we initialise the data dirs
-use Renard::Curie::Helper ();
+use Renard::Incunabula::Frontend::Gtk3::Helper ();
 
 my $temp = Path::Tiny->tempdir;
 # Add to XDG_DATA_DIRS early so that it is available for system data dir lookup.
@@ -15,20 +15,20 @@ $ENV{XDG_DATA_DIRS} .= join(":", "/usr/local/share", "/usr/share", $temp);
 Gtk3::init;
 
 # we can now import
-Renard::Curie::Helper->import;
+Renard::Incunabula::Frontend::Gtk3::Helper->import;
 
 subtest "Use helper functions" => sub {
-	my $val = Renard::Curie::Helper->gval(int => 512);
+	my $val = Renard::Incunabula::Frontend::Gtk3::Helper->gval(int => 512);
 	isa_ok( $val, 'Glib::Object::Introspection::GValueWrapper' );
 
-	my $enum = Renard::Curie::Helper->genum(
+	my $enum = Renard::Incunabula::Frontend::Gtk3::Helper->genum(
 		'Gtk3::PackType' => 'GTK_PACK_START' );
 	is( $enum, 0 );
 };
 
 subtest "Theming" => sub {
 	plan skip_all => "Do not need to test theming on Windows"
-		unless Renard::Curie::Helper::_can_set_theme();
+		unless Renard::Incunabula::Frontend::Gtk3::Helper::_can_set_theme();
 
 	my $settings = Gtk3::Settings::get_default;
 	my $default_theme = 'Adwaita';
@@ -46,7 +46,7 @@ subtest "Theming" => sub {
 
 			diag 'Warning about missing theme can be ignored';
 			my $try_theme = 'Does-Not-Exist';
-			Renard::Curie::Helper::_set_theme($try_theme);
+			Renard::Incunabula::Frontend::Gtk3::Helper::_set_theme($try_theme);
 			isnt( $settings->get_property($theme_property),
 				$try_theme, 'Theme has not changed' );
 		};
@@ -71,7 +71,7 @@ EOF
 
 			$theme_dir->child(qw(gtk-3.0 gtk.css))->touchpath;
 
-			Renard::Curie::Helper::_set_theme($try_theme);
+			Renard::Incunabula::Frontend::Gtk3::Helper::_set_theme($try_theme);
 			is( $settings->get_property($theme_property),
 				$try_theme, 'Theme has changed' );
 
@@ -86,7 +86,7 @@ EOF
 
 			diag 'Warning about missing icon theme can be ignored';
 			my $try_icon_theme = 'Does-Not-Exist';
-			Renard::Curie::Helper::_set_icon_theme($try_icon_theme);
+			Renard::Incunabula::Frontend::Gtk3::Helper::_set_icon_theme($try_icon_theme);
 			isnt( $settings->get_property($icon_theme_property),
 				$try_icon_theme, 'Icon theme has not changed' );
 		};
@@ -112,7 +112,7 @@ Type=Fixed
 EOF
 			$icon_theme_dir->child(qw(actions 16 gtk-open.png))->touchpath;
 
-			Renard::Curie::Helper::_set_icon_theme($try_theme);
+			Renard::Incunabula::Frontend::Gtk3::Helper::_set_icon_theme($try_theme);
 			is( $settings->get_property($icon_theme_property),
 				$try_theme, 'Icon theme has changed' );
 

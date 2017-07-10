@@ -3,7 +3,7 @@
 use Test::Most tests => 2;
 
 use lib 't/lib';
-use CurieTestHelper;
+use Renard::Incunabula::Devel::TestHelper;
 use Renard::Incunabula::Common::Setup;
 
 # need to import later --- after we initialise the data dirs

@@ -10,6 +10,7 @@ native:
     packages:
       - gtk+3
       - gtk-mac-integration
+      - gobject-introspection
       - gnome-icon-theme
   msys2-mingw64:
     packages:

@@ -9,8 +9,9 @@ package Renard::Incunabula::Frontend::Gtk3::Helper;
 =cut
 
 use Renard::Incunabula::Common::Types qw(Str);
+use Env qw($DISPLAY $RENARD_USE_XINPUT2);
 use Class::Method::Modifiers;
-use Gtk3 -init;
+use Gtk3;
 use Function::Parameters;
 
 our $LOADED = 0;
@@ -81,23 +82,44 @@ fun _set_icon_theme( (Str) $icon_theme_name ) {
 	}                                                                   # uncoverable statement
 }
 
+=func _setup_disable_xinput2
+
+  fun _setup_disable_xinput2() {
+
+Checks to see if running under X11 and that the environment variable
+C<< $ENV{RENARD_USE_XINPUT2} >> is not set to a true value.
+If so, disables the L<XInput 2 extension|https://www.x.org/wiki/guide/extensions/#index2h2>.
+
+This is necessary because GDK has an issue with some forms of mouse scrolling
+under XInput 2. XInput 2 provides support for smooth scrolling, but sometimes
+it sends emulated smooth scroll events that have zero for their deltas when
+dealing with mice that do not support smooth scrolling natively (i.e., they use
+buttons 4 and 5). This prevents widgets from responding.
+
+This is similar to C<< $ENV{GDK_CORE_DEVICE_EVENTS} >> as documented here
+L<https://developer.gnome.org/gtk3/stable/gtk-x11.html>.
+
+=cut
+fun _setup_disable_xinput2() {
+	if( $DISPLAY && ! $RENARD_USE_XINPUT2 ) {
+		Gtk3::Gdk::disable_multidevice();
+	}
+}
+
 =func _setup_gtk
 
   fun _setup_gtk()
 
-Sets up any of the L<Glib::Object::Introspection>-based libraries needed for
-the application.
+Setup Gtk3.
 
-Currently loads nothing, but will load the Gnome Docking Library (C<libgdl>) in
-the future.
+First, this calls C<< _setup_disable_xinput2() >>.
+
+Then this initialises Gtk3.
 
 =cut
 fun _setup_gtk() {
-	# stub out the GDL loading for now. Docking is not yet used.
-	##Glib::Object::Introspection->setup(
-		##basename => 'Gdl',
-		##version => '3',
-		##package => 'Gdl', );
+	_setup_disable_xinput2;
+	Gtk3::init;
 }
 
 fun _gtk_box_shim() {

@@ -85,19 +85,10 @@ fun _set_icon_theme( (Str) $icon_theme_name ) {
 
   fun _setup_gtk()
 
-Sets up any of the L<Glib::Object::Introspection>-based libraries needed for
-the application.
-
-Currently loads nothing, but will load the Gnome Docking Library (C<libgdl>) in
-the future.
+Setup Gtk3.
 
 =cut
 fun _setup_gtk() {
-	# stub out the GDL loading for now. Docking is not yet used.
-	##Glib::Object::Introspection->setup(
-		##basename => 'Gdl',
-		##version => '3',
-		##package => 'Gdl', );
 }
 
 fun _gtk_box_shim() {

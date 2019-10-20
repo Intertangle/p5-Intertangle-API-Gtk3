@@ -15,5 +15,4 @@ native:
   msys2-mingw64:
     packages:
       - mingw-w64-x86_64-gobject-introspection
-      - mingw-w64-x86_64-cairo
       - mingw-w64-x86_64-gtk3

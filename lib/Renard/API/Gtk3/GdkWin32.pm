@@ -34,6 +34,16 @@ sub import {
 		Gtk3::Gdk::threads_leave();
 		return $hwnd;
 	});
+	# GdkWindow * gdk_win32_window_foreign_new_for_display (GdkDisplay *display, HWND anid)
+	$ffi->attach(
+		[ gdk_win32_window_foreign_new_for_display => __PACKAGE__ . '::Win32Window::foreign_new_for_display'  ]
+		=> [ 'opaque', 'opaque' ], 'opaque', sub {
+		my ($xs, $package, $gdk_display, $hwnd) = @_;
+		Gtk3::Gdk::threads_enter();
+		my $gdk_window = $xs->( Glib::Object::get_pointer($gdk_display), $hwnd );
+		Gtk3::Gdk::threads_leave();
+		return Gtk3::Gdk::Window->new_from_pointer($gdk_window);
+	});
 }
 
 1;

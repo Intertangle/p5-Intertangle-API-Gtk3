@@ -10,6 +10,15 @@ Renard::API::Gtk3 - Provides helpers for dealing with Gtk3 code
 
 version 0.004
 
+=head1 METHODS
+
+=head2 Inline
+
+  use Inline C with => qw(Renard::API::Gtk3);
+
+Returns the flags needed to configure L<Inline::C> to use with
+C<gtk+-3.0>.
+
 =head1 SEE ALSO
 
 L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-API-Gtk3/>

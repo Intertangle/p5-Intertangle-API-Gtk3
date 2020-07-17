@@ -12,6 +12,7 @@ use Renard::Incunabula::Common::Types qw(Str);
 use Env qw($DISPLAY $RENARD_USE_XINPUT2);
 use Class::Method::Modifiers;
 use Gtk3;
+use Renard::API::Gtk3::Helper::Gtk3::Adjustment;
 use Function::Parameters;
 
 our $LOADED = 0;

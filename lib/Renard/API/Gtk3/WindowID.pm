@@ -5,6 +5,14 @@ package Renard::API::Gtk3::WindowID;
 use Renard::Incunabula::Common::Types qw(InstanceOf);
 use Module::Load;
 
+=method get_widget_id
+
+  method get_widget_id( (InstanceOf['Gtk3::Widget']) $widget )
+
+Retrieves platform-specific windows ID / handle which can be used for
+re-parenting windows.
+
+=cut
 method get_widget_id( (InstanceOf['Gtk3::Widget']) $widget ) {
 	my $gdk_window = $widget->get_window;
 

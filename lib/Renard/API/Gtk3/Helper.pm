@@ -141,13 +141,13 @@ fun _gtk_box_shim() {
 }
 
 sub import {
-	unless( $::LOADED ) {
+	unless( $LOADED ) {
 		_setup_gtk();
 		_scrolled_window_viewport_shim;
 		_gtk_box_shim;
 		#_set_theme('Flat-Plat');
 		#_set_icon_theme('Arc');
-		$::LOADED = 1;
+		$LOADED = 1;
 	}
 	return;
 }

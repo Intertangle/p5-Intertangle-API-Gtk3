@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3::Helper::Gtk3::Adjustment;
+package Intertangle::API::Gtk3::Helper::Gtk3::Adjustment;
 # ABSTRACT: Helpers for Gtk3::Adjustment
 
 package # hide from PAUSE

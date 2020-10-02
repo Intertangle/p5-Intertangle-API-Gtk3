@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3::Component::Role::UIFileFromPackageName;
+package Intertangle::API::Gtk3::Component::Role::UIFileFromPackageName;
 # ABSTRACT: Role to obtain name of Glade UI file from the name of the package
 
 use Moo::Role;
@@ -17,7 +17,7 @@ directory as the C<.pm> file for the package that this role is used with.
 For example, given a package C<Foo::Bar> from the file C<lib/Foo/Bar.pm>, the
 contents of C<ui_file> will be C<lib/Foo/Bar.glade>.
 
-See the C<ui_file> attribute in L<Renard::API::Gtk3::Component::Role::FromBuilder>.
+See the C<ui_file> attribute in L<Intertangle::API::Gtk3::Component::Role::FromBuilder>.
 
 =cut
 has ui_file => (

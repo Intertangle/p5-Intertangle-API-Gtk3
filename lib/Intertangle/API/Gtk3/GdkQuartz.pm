@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3::GdkQuartz;
+package Intertangle::API::Gtk3::GdkQuartz;
 # ABSTRACT: Load the GdkQuartz library
 
 use FFI::Platypus;

@@ -3,15 +3,15 @@
 use Test::Most tests => 1;
 
 use Renard::Incunabula::Common::Setup;
-use Renard::API::Gtk3;
+use Intertangle::API::Gtk3;
 use Gtk3 -init;
 
 subtest "Get visual IDs" => fun() {
 	my $w = Gtk3::Window->new;
 	$w->show_all;
 	plan skip_all => "Not on X11" unless $w->get_window =~ /X11Window/;
-	require Renard::API::Gtk3::GdkX11;
-	Renard::API::Gtk3::GdkX11->import;
+	require Intertangle::API::Gtk3::GdkX11;
+	Intertangle::API::Gtk3::GdkX11->import;
 
 	my $gdk_screen = $w->get_screen;
 	my $gdk_visuals = $gdk_screen->list_visuals;

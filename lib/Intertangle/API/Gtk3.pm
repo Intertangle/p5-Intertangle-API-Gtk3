@@ -1,10 +1,10 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3;
+package Intertangle::API::Gtk3;
 # ABSTRACT: Provides helpers for dealing with Gtk3 code
 
 =method Inline
 
-  use Inline C with => qw(Renard::API::Gtk3);
+  use Inline C with => qw(Intertangle::API::Gtk3);
 
 Returns the flags needed to configure L<Inline::C> to use with
 C<gtk+-3.0>.
@@ -17,9 +17,9 @@ sub Inline {
 	my $gtk3_pkg = 'gtk+-3.0';
 
 	require ExtUtils::PkgConfig;
-	require Renard::API::Glib;
+	require Intertangle::API::Glib;
 	require Hash::Merge;
-	my $glib = Renard::API::Glib->Inline($_[-1]);
+	my $glib = Intertangle::API::Glib->Inline($_[-1]);
 
 	my @nosearch = $^O eq 'MSWin32' ? (':nosearch') : ();
 	my @search   = $^O eq 'MSWin32' ? ( ':search' ) : ();
@@ -41,4 +41,4 @@ __END__
 
 =head1 SEE ALSO
 
-L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-API-Gtk3/>
+

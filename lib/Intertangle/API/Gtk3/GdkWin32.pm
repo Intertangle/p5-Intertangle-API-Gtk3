@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3::GdkWin32;
+package Intertangle::API::Gtk3::GdkWin32;
 # ABSTRACT: Load the GdkWin32 library
 
 use Glib::Object::Introspection;

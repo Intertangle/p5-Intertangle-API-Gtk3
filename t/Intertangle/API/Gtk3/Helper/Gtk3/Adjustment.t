@@ -6,8 +6,8 @@ use Renard::Incunabula::Common::Setup;
 
 use lib 't/lib';
 
-use Renard::API::Gtk3::Helper;
-use Renard::API::Gtk3::Helper::Gtk3::Adjustment;
+use Intertangle::API::Gtk3::Helper;
+use Intertangle::API::Gtk3::Helper::Gtk3::Adjustment;
 
 my $adjustment = Gtk3::Adjustment->new(5, 0, 10, 1, 2, 2);
 

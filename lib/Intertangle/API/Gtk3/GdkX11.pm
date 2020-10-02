@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3::GdkX11;
+package Intertangle::API::Gtk3::GdkX11;
 # ABSTRACT: Load the GdkX11 library
 
 use Glib::Object::Introspection;

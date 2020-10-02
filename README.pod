@@ -4,7 +4,7 @@
 
 =head1 NAME
 
-Renard::API::Gtk3 - Provides helpers for dealing with Gtk3 code
+Intertangle::API::Gtk3 - Provides helpers for dealing with Gtk3 code
 
 =head1 VERSION
 
@@ -14,22 +14,20 @@ version 0.004
 
 =head2 Inline
 
-  use Inline C with => qw(Renard::API::Gtk3);
+  use Inline C with => qw(Intertangle::API::Gtk3);
 
 Returns the flags needed to configure L<Inline::C> to use with
 C<gtk+-3.0>.
 
 =head1 SEE ALSO
 
-L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-API-Gtk3/>
-
 =head1 AUTHOR
 
-Project Renard
+Zakariyya Mughal <zmughal@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017 by Project Renard.
+This software is copyright (c) 2017 by Zakariyya Mughal.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

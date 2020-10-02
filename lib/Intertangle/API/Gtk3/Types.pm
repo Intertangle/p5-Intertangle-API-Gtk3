@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::Gtk3::Types;
+package Intertangle::API::Gtk3::Types;
 # ABSTRACT: Type library for Gtk3
 
 use Type::Library 0.008 -base,

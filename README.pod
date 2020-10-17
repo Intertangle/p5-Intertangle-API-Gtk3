@@ -8,7 +8,7 @@ Intertangle::API::Gtk3 - Provides helpers for dealing with Gtk3 code
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 METHODS
 

@@ -1,18 +1,18 @@
 {
    "abstract" : "Provides helpers for dealing with Gtk3 code",
    "author" : [
-      "Project Renard"
+      "Zakariyya Mughal <zmughal@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 6.010, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Dist::Zilla version 6.015, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
-   "name" : "Renard-Incunabula-Frontend-Gtk3",
+   "name" : "Intertangle-API-Gtk3",
    "prereqs" : {
       "configure" : {
          "requires" : {
@@ -35,10 +35,18 @@
       "runtime" : {
          "requires" : {
             "Class::Method::Modifiers" : "0",
+            "Env" : "0",
+            "ExtUtils::PkgConfig" : "0",
+            "FFI::CheckLib" : "0.06",
+            "FFI::Platypus" : "0",
             "File::Basename" : "0",
             "File::Spec" : "0",
             "Function::Parameters" : "0",
+            "Glib::Object::Introspection" : "0",
             "Gtk3" : "0",
+            "Hash::Merge" : "0",
+            "Intertangle::API::Glib" : "0",
+            "Module::Load" : "0",
             "Module::Util" : "0",
             "Moo::Role" : "0",
             "Renard::Incunabula::Common::Setup" : "0",
@@ -61,14 +69,16 @@
    },
    "release_status" : "stable",
    "resources" : {
-      "homepage" : "https://github.com/project-renard/p5-Renard-Incunabula-Frontend-Gtk3",
+      "homepage" : "https://github.com/Intertangle/p5-Intertangle-API-Gtk3",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/project-renard/p5-Renard-Incunabula-Frontend-Gtk3.git",
-         "web" : "https://github.com/project-renard/p5-Renard-Incunabula-Frontend-Gtk3"
+         "url" : "https://github.com/Intertangle/p5-Intertangle-API-Gtk3.git",
+         "web" : "https://github.com/Intertangle/p5-Intertangle-API-Gtk3"
       }
    },
-   "version" : "0.004",
-   "x_serialization_backend" : "JSON::XS version 3.04"
+   "version" : "0.005",
+   "x_generated_by_perl" : "v5.26.1",
+   "x_serialization_backend" : "Cpanel::JSON::XS version 4.24",
+   "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later"
 }
 

@@ -1,12 +1,14 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::Incunabula::Frontend::Gtk3::Helper;
-$Renard::Incunabula::Frontend::Gtk3::Helper::VERSION = '0.004';
+package Intertangle::API::Gtk3::Helper;
+$Intertangle::API::Gtk3::Helper::VERSION = '0.005';
 # ABSTRACT: Collection of helper utilities for Gtk3 and Glib
 
 
 use Renard::Incunabula::Common::Types qw(Str);
+use Env qw($DISPLAY $RENARD_USE_XINPUT2);
 use Class::Method::Modifiers;
-use Gtk3 -init;
+use Gtk3;
+use Intertangle::API::Gtk3::Helper::Gtk3::Adjustment;
 use Function::Parameters;
 
 our $LOADED = 0;
@@ -77,12 +79,15 @@ fun _set_icon_theme( (Str) $icon_theme_name ) {
 	}                                                                   # uncoverable statement
 }
 
+fun _setup_disable_xinput2() {
+	if( $DISPLAY && ! $RENARD_USE_XINPUT2 ) {
+		Gtk3::Gdk::disable_multidevice();
+	}
+}
+
 fun _setup_gtk() {
-	# stub out the GDL loading for now. Docking is not yet used.
-	##Glib::Object::Introspection->setup(
-		##basename => 'Gdl',
-		##version => '3',
-		##package => 'Gdl', );
+	_setup_disable_xinput2;
+	Gtk3::init;
 }
 
 fun _gtk_box_shim() {
@@ -104,13 +109,13 @@ fun _gtk_box_shim() {
 }
 
 sub import {
-	unless( $::LOADED ) {
+	unless( $LOADED ) {
 		_setup_gtk();
 		_scrolled_window_viewport_shim;
 		_gtk_box_shim;
 		#_set_theme('Flat-Plat');
 		#_set_icon_theme('Arc');
-		$::LOADED = 1;
+		$LOADED = 1;
 	}
 	return;
 }
@@ -143,23 +148,40 @@ __END__
 
 =head1 NAME
 
-Renard::Incunabula::Frontend::Gtk3::Helper - Collection of helper utilities for Gtk3 and Glib
+Intertangle::API::Gtk3::Helper - Collection of helper utilities for Gtk3 and Glib
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 FUNCTIONS
+
+=head2 _setup_disable_xinput2
+
+  fun _setup_disable_xinput2() {
+
+Checks to see if running under X11 and that the environment variable
+C<< $ENV{RENARD_USE_XINPUT2} >> is not set to a true value.
+If so, disables the L<XInput 2 extension|https://www.x.org/wiki/guide/extensions/#index2h2>.
+
+This is necessary because GDK has an issue with some forms of mouse scrolling
+under XInput 2. XInput 2 provides support for smooth scrolling, but sometimes
+it sends emulated smooth scroll events that have zero for their deltas when
+dealing with mice that do not support smooth scrolling natively (i.e., they use
+buttons 4 and 5). This prevents widgets from responding.
+
+This is similar to C<< $ENV{GDK_CORE_DEVICE_EVENTS} >> as documented here
+L<https://developer.gnome.org/gtk3/stable/gtk-x11.html>.
 
 =head2 _setup_gtk
 
   fun _setup_gtk()
 
-Sets up any of the L<Glib::Object::Introspection>-based libraries needed for
-the application.
+Setup Gtk3.
 
-Currently loads nothing, but will load the Gnome Docking Library (C<libgdl>) in
-the future.
+First, this calls C<< _setup_disable_xinput2() >>.
+
+Then this initialises Gtk3.
 
 =head1 CLASS METHODS
 
@@ -232,7 +254,7 @@ For example, if we are trying to call the callback function
 C<Target::Package::on_event_cb> and C<$target> is a blessed reference of type
 C<Target::Package>, then by using
 
-  Renard::Incunabula::Frontend::Gtk3::Helper->callback( $target, on_event_cb => @rest_of_args );
+  Intertangle::API::Gtk3::Helper->callback( $target, on_event_cb => @rest_of_args );
 
 effectively calls
 
@@ -240,11 +262,11 @@ effectively calls
 
 =head1 AUTHOR
 
-Project Renard
+Zakariyya Mughal <zmughal@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017 by Project Renard.
+This software is copyright (c) 2017 by Zakariyya Mughal.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

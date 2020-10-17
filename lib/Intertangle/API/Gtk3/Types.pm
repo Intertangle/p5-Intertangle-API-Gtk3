@@ -1,7 +1,7 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::Incunabula::Frontend::Gtk3::Types;
+package Intertangle::API::Gtk3::Types;
 # ABSTRACT: Type library for Gtk3
-$Renard::Incunabula::Frontend::Gtk3::Types::VERSION = '0.004';
+$Intertangle::API::Gtk3::Types::VERSION = '0.005';
 use Type::Library 0.008 -base,
 	-declare => [qw(
 		SizeRequest
@@ -25,11 +25,11 @@ __END__
 
 =head1 NAME
 
-Renard::Incunabula::Frontend::Gtk3::Types - Type library for Gtk3
+Intertangle::API::Gtk3::Types - Type library for Gtk3
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 EXTENDS
 
@@ -47,11 +47,11 @@ A tuple that represents a size request for a widget.
 
 =head1 AUTHOR
 
-Project Renard
+Zakariyya Mughal <zmughal@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017 by Project Renard.
+This software is copyright (c) 2017 by Zakariyya Mughal.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,9 +1,9 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::Incunabula::Frontend::Gtk3::Component::Role::FromBuilder;
+package Intertangle::API::Gtk3::Component::Role::FromBuilder;
 # ABSTRACT: Role that loads a Glade UI file into a Gtk3::Builder
-$Renard::Incunabula::Frontend::Gtk3::Component::Role::FromBuilder::VERSION = '0.004';
+$Intertangle::API::Gtk3::Component::Role::FromBuilder::VERSION = '0.005';
 use Moo::Role;
-use Renard::Incunabula::Frontend::Gtk3::Helper;
+use Intertangle::API::Gtk3::Helper;
 use Renard::Incunabula::Common::Types qw(InstanceOf);
 
 requires 'ui_file';
@@ -33,17 +33,17 @@ __END__
 
 =head1 NAME
 
-Renard::Incunabula::Frontend::Gtk3::Component::Role::FromBuilder - Role that loads a Glade UI file into a Gtk3::Builder
+Intertangle::API::Gtk3::Component::Role::FromBuilder - Role that loads a Glade UI file into a Gtk3::Builder
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 DESCRIPTION
 
 This role is used to load a Glade file into the C<builder> attribute.
 
-This role can be combined with L<Renard::Incunabula::Frontend::Gtk3::Component::Role::UIFileFromPackageName>
+This role can be combined with L<Intertangle::API::Gtk3::Component::Role::UIFileFromPackageName>
 so that the contents of the C<ui_file> attribute are automatically populated
 based on the package that the role is being included in.
 
@@ -62,11 +62,11 @@ C<ui_file>.
 
 =head1 AUTHOR
 
-Project Renard
+Zakariyya Mughal <zmughal@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017 by Project Renard.
+This software is copyright (c) 2017 by Zakariyya Mughal.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,7 +1,7 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::Incunabula::Frontend::Gtk3::Component::Role::UIFileFromPackageName;
+package Intertangle::API::Gtk3::Component::Role::UIFileFromPackageName;
 # ABSTRACT: Role to obtain name of Glade UI file from the name of the package
-$Renard::Incunabula::Frontend::Gtk3::Component::Role::UIFileFromPackageName::VERSION = '0.004';
+$Intertangle::API::Gtk3::Component::Role::UIFileFromPackageName::VERSION = '0.005';
 use Moo::Role;
 
 use Renard::Incunabula::Common::Types qw(File);
@@ -31,11 +31,11 @@ __END__
 
 =head1 NAME
 
-Renard::Incunabula::Frontend::Gtk3::Component::Role::UIFileFromPackageName - Role to obtain name of Glade UI file from the name of the package
+Intertangle::API::Gtk3::Component::Role::UIFileFromPackageName - Role to obtain name of Glade UI file from the name of the package
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 DESCRIPTION
 
@@ -51,15 +51,15 @@ directory as the C<.pm> file for the package that this role is used with.
 For example, given a package C<Foo::Bar> from the file C<lib/Foo/Bar.pm>, the
 contents of C<ui_file> will be C<lib/Foo/Bar.glade>.
 
-See the C<ui_file> attribute in L<Renard::Incunabula::Frontend::Gtk3::Component::Role::FromBuilder>.
+See the C<ui_file> attribute in L<Intertangle::API::Gtk3::Component::Role::FromBuilder>.
 
 =head1 AUTHOR
 
-Project Renard
+Zakariyya Mughal <zmughal@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017 by Project Renard.
+This software is copyright (c) 2017 by Zakariyya Mughal.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
